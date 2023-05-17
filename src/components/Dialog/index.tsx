@@ -4,27 +4,34 @@ import { SpeedDial } from '@mui/material';
 import { SpeedDialIcon } from '@mui/material';
 import { SpeedDialAction } from '@mui/material';
 import { useState } from 'react';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 import EditIcon from '@mui/icons-material/Edit';
-import PersonIcon from '@mui/icons-material/Person';
+import AddIcon from '@mui/icons-material/Add';
 
 const DialogComponent = () => {
     const actions = [
         {
-            icon: <LogoutIcon />,
-            name: 'Sair'
-        },
-        {
             icon: <EditIcon />,
-            name: 'Tarefas'
+            name: 'Create task',
+            link: "/tasks/create"
         },
         {
-            icon: <PersonIcon />,
-            name: 'Perfil'
-        },
+            icon: <AddIcon />,
+            name: 'Tasks',
+            link: "/tasks"
+        }
     ];
+
+    const redirectTo = (link: any) => {
+        window.location.href= link
+    }
+
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(!open);
+    const handleOpen = () => {
+        setOpen(!open);
+
+
+    } 
     const handleClose = () => setOpen(false);
     return (
         <SpeedDial
@@ -42,7 +49,7 @@ const DialogComponent = () => {
                     icon={action.icon}
                     tooltipTitle={action.name}
                     tooltipOpen
-                    onClick={handleClose}
+                    onClick={() => redirectTo(action.link)}
                 />
             ))}
         </SpeedDial>
