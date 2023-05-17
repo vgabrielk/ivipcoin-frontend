@@ -53,7 +53,7 @@ const Tasks = () => {
 
     useEffect(() => {
         const results = taskFilter.filter((resp: TaskType) =>
-            resp.task_title.toLowerCase().includes(result)
+            resp.task_title.toLowerCase().includes(result.toLowerCase())
         );
         setTaskData(results);
     }, [result, taskFilter]);
