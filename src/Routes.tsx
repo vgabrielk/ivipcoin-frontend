@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import SignIn from "./pages/SignIn"
 import Tasks from "./pages/Tasks"
 import DialogComponent from "./components/Dialog"
+import TaskStore from "./pages/TaskStore"
+import TaskShow from "./pages/TaskShow"
 
 function RoutesComponent() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<SignIn />} />
+          <Route path="/" element={<Tasks />} />
           <Route path="/tasks" element={<Tasks />} />
+          <Route path="/tasks/create" element={<TaskStore />} />
+          <Route path="/task/:id" element={<TaskShow />} />
         </Routes>
 
         {window.location.pathname == '/login' ? null : <DialogComponent /> }
